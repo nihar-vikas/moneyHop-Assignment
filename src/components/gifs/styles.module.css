@@ -1,0 +1,82 @@
+.gifsMain {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 0rem;
+    box-sizing: border-box;
+    text-align: left;
+    border-radius: 0px;
+    border: 0px;
+    outline: none;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.gifs {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    --stagger-delay: 100ms;
+}
+
+.gifCardImg {
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    animation: spin 10s infinite reverse linear;
+}
+
+.gifCardContent {
+    padding: 5px;
+}
+
+.gifCard {
+    position: relative;
+    width: 100%;
+    animation: cardEntrance 700ms ease-out;
+    animation-fill-mode: backwards;
+}
+
+.gifCard:hover {
+    transform: translateY(-3px) scale(.9);
+    z-index: 1000;
+ }
+
+@keyframes cardEntrance {
+    from {
+      opacity: 0;
+      transform: scale(0.3);
+      filter: hue-rotate(180deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      filter: hue-rotate(0deg);
+    }
+  }
+  
+
+@media screen and (min-width: 768px) {
+    .gifCard {
+        width: 25%;
+    }
+    .gifCard:nth-child(5n-10) {
+        width: 50%;
+    }
+}
+
+.message {
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+    width: 100%;
+    height: 100vh;
+}
+
+.paginationLoader {
+    width: 100%;
+    text-align: center;
+}
