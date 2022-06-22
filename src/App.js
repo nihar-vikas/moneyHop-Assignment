@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Gifs from './components/gifs';
 import { GetGlobalContext } from './components/globalContext';
@@ -29,8 +30,12 @@ function App() {
   return (
     <div className="App">
       <div className="appBody">
-        <Header />
-        <Gifs />
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Gifs />} />
+          </Routes>
+        </BrowserRouter>
       </div>
       <Loader />
     </div>

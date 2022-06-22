@@ -4,9 +4,13 @@ import styles from './styles.module.css';
 import Logo from '../../assets/logo-nav.png';
 import { GetGlobalContext } from "../globalContext";
 import { debounce } from "../../lib/debounce";
-import searchIcon from '../../assets/searchIcon.svg'
+import searchIcon from '../../assets/searchIcon.svg';
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
+    const navigation = useNavigate();
+    const search = useLocation().search;
+    const searchParm = new URLSearchParams(search).get('parms') || '';
     const { state, dispatch, fetchGif } = GetGlobalContext();
     const [suggestionList, setSuggestionList] = useState([]);
 
@@ -26,14 +30,18 @@ const Header = () => {
     }
 
     useEffect(() => {
-        fetchGif(true);
+        fetchGif(true, searchParm);
+        dispatch({ type: 'SET_SEARCH_VALUE', payload: searchParm });
     }, []);
 
     const handleSearch = useCallback(debounce((e) => {
+        fetchGif(true, e.target.value);
         if (!e.target.value) {
             setSuggestionList([]);
+            navigation('/');
+            return;
         }
-        fetchGif(true, e.target.value);
+        navigation(`?parms=${e.target.value}`);
     }, 500), []);
 
     const handleSuggestions = useCallback(debounce((e) => {
