@@ -5,6 +5,7 @@
   overflow-x: hidden;
   margin: 0 !important;
   background-color:#000000;
+  z-index: 10;
 }
 
 .appBody {

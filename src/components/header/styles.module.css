@@ -1,6 +1,5 @@
 .headerMain {
     background-color:#000000;
-    overflow: hidden;
     padding: 1rem 5px;
 }
 
@@ -21,6 +20,7 @@
     width: 100%;
     display: flex;
     padding-left: 2rem;
+    position: relative;
 }
 .searchButton {
     width: 4rem;
@@ -72,4 +72,49 @@ input::-webkit-calendar-picker-indicator {
 }
 input::-webkit-calendar-picker-indicator {
     opacity: 0;
+}
+
+.suggestList {
+    position: absolute;
+    top: 2.7rem;
+    left: 2rem;
+    right: 4rem;
+    height: 10rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 100;
+    background-color: #0f172b;
+    border-radius: 0 0px 5px 5px;
+}
+
+.suggestListOption {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: .5rem;
+    border-bottom: 1px solid #172343;
+    z-index: 100;
+    cursor: pointer;
+    color: #ffff;
+}
+
+.suggestListOption:hover {
+    background-color: #1e293b;
+}
+.suggestListOptionContent {
+    display: flex;
+    align-items: center;
+}
+.suggestListName {
+    padding-left: .5rem;
+}
+
+.suggestLabel {
+    padding-left: .5rem;
+    color: #ffff;
+    margin: .5rem 0;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
 }
